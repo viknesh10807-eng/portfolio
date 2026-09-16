@@ -1,0 +1,876 @@
+/* =================================
+   BASIC SETTINGS
+================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #020604;
+    color: white;
+    overflow-x: hidden;
+}
+
+
+/* =================================
+   CRICKET BACKGROUND
+================================= */
+
+.cricket-bg {
+    position: fixed;
+    inset: 0;
+
+    width: 100%;
+    height: 100vh;
+
+    overflow: hidden;
+
+    z-index: -1;
+
+    background:
+        radial-gradient(
+            circle at 50% 20%,
+            #17391f 0%,
+            #061109 40%,
+            #020604 80%
+        );
+}
+
+
+/* =================================
+   STADIUM LIGHTS
+================================= */
+
+.stadium-lights {
+    position: absolute;
+
+    top: 30px;
+    left: 0;
+
+    width: 100%;
+
+    display: flex;
+    justify-content: space-around;
+}
+
+.stadium-lights span {
+    width: 15px;
+    height: 15px;
+
+    border-radius: 50%;
+
+    background: white;
+
+    box-shadow:
+        0 0 10px white,
+        0 0 30px white,
+        0 0 60px #b7ffbf;
+
+    animation: lightBlink 2s infinite alternate;
+}
+
+.stadium-lights span:nth-child(2) {
+    animation-delay: .4s;
+}
+
+.stadium-lights span:nth-child(3) {
+    animation-delay: .8s;
+}
+
+.stadium-lights span:nth-child(4) {
+    animation-delay: 1.2s;
+}
+
+@keyframes lightBlink {
+
+    from {
+        opacity: .5;
+    }
+
+    to {
+        opacity: 1;
+    }
+
+}
+
+
+/* =================================
+   CRICKET GROUND
+================================= */
+
+.ground {
+    position: absolute;
+
+    bottom: -35%;
+
+    left: -10%;
+
+    width: 120%;
+    height: 70%;
+
+    border-radius: 50% 50% 0 0;
+
+    background:
+        radial-gradient(
+            ellipse,
+            #246b31 0%,
+            #123d1c 50%,
+            #071b0c 100%
+        );
+}
+
+
+/* =================================
+   PITCH
+================================= */
+
+.pitch {
+    position: absolute;
+
+    left: 50%;
+    top: 10%;
+
+    transform: translateX(-50%);
+
+    width: 150px;
+    height: 500px;
+
+    background: #a98655;
+
+    opacity: .5;
+
+    border-left: 2px solid #d8c69c;
+    border-right: 2px solid #d8c69c;
+}
+
+
+/* =================================
+   BATSMAN
+================================= */
+
+.batsman {
+    position: absolute;
+
+    left: 48%;
+    bottom: 15%;
+
+    width: 80px;
+    height: 180px;
+
+    transform: scale(.8);
+}
+
+
+/* Head */
+
+.head {
+    position: absolute;
+
+    top: 0;
+    left: 28px;
+
+    width: 35px;
+    height: 35px;
+
+    border-radius: 50%;
+
+    background: #c58a62;
+
+    border: 5px solid #eeeeee;
+}
+
+
+/* Body */
+
+.body {
+    position: absolute;
+
+    top: 38px;
+    left: 25px;
+
+    width: 40px;
+    height: 65px;
+
+    border-radius: 15px 15px 5px 5px;
+
+    background: #eeeeee;
+}
+
+
+/* Legs */
+
+.leg {
+    position: absolute;
+
+    top: 98px;
+
+    width: 12px;
+    height: 70px;
+
+    background: #eeeeee;
+
+    transform-origin: top;
+}
+
+.left-leg {
+    left: 30px;
+    transform: rotate(8deg);
+}
+
+.right-leg {
+    left: 50px;
+    transform: rotate(-8deg);
+}
+
+
+/* =================================
+   BAT
+================================= */
+
+.bat {
+    position: absolute;
+
+    top: 55px;
+    left: 55px;
+
+    width: 13px;
+    height: 100px;
+
+    background: #c9954d;
+
+    border-radius: 5px;
+
+    transform-origin: bottom center;
+
+    transform: rotate(-60deg);
+
+    animation: batSwing 2.5s infinite;
+}
+
+
+/* Bat swing */
+
+@keyframes batSwing {
+
+    0% {
+        transform: rotate(-60deg);
+    }
+
+    35% {
+        transform: rotate(-60deg);
+    }
+
+    45% {
+        transform: rotate(35deg);
+    }
+
+    55% {
+        transform: rotate(65deg);
+    }
+
+    70% {
+        transform: rotate(-60deg);
+    }
+
+    100% {
+        transform: rotate(-60deg);
+    }
+
+}
+
+
+/* =================================
+   BOWLING BALL
+================================= */
+
+.ball {
+    position: absolute;
+
+    left: 10%;
+
+    bottom: 30%;
+
+    font-size: 35px;
+
+    animation: ballMove 2.5s infinite;
+}
+
+
+/* Ball moves toward batsman */
+
+@keyframes ballMove {
+
+    0% {
+        left: 10%;
+        bottom: 30%;
+
+        transform: scale(.5);
+    }
+
+    35% {
+        left: 38%;
+        bottom: 29%;
+
+        transform: scale(.8);
+    }
+
+    42% {
+        left: 46%;
+        bottom: 29%;
+
+        transform: scale(1);
+    }
+
+    45% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 0;
+    }
+
+}
+
+
+/* =================================
+   HIT BALL
+================================= */
+
+.hit-ball {
+    position: absolute;
+
+    left: 47%;
+    bottom: 30%;
+
+    width: 16px;
+    height: 16px;
+
+    border-radius: 50%;
+
+    background: #d71920;
+
+    box-shadow:
+        0 0 10px #ff3333;
+
+    animation: hitBall 5s infinite;
+}
+
+
+/* Ball flies after hit */
+
+@keyframes hitBall {
+
+    0% {
+        left: 47%;
+        bottom: 30%;
+
+        opacity: 0;
+    }
+
+    8% {
+        opacity: 0;
+    }
+
+    12% {
+        opacity: 1;
+    }
+
+    /* Ball goes toward boundary */
+
+    40% {
+        left: 90%;
+        bottom: 55%;
+
+        transform: scale(1.2);
+    }
+
+    /* Ball goes high */
+
+    55% {
+        left: 75%;
+        bottom: 85%;
+
+        transform: scale(.7);
+    }
+
+    70% {
+        left: 95%;
+        bottom: 75%;
+
+        opacity: 1;
+    }
+
+    75% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 0;
+    }
+
+}
+
+
+/* =================================
+   FOUR
+================================= */
+
+.four {
+    position: absolute;
+
+    right: 8%;
+    top: 40%;
+
+    font-size: 100px;
+
+    font-weight: 900;
+
+    color: #54e346;
+
+    text-shadow:
+        0 0 10px #54e346,
+        0 0 30px #54e346;
+
+    opacity: 0;
+
+    animation: showFour 5s infinite;
+}
+
+@keyframes showFour {
+
+    0%,
+    45% {
+        opacity: 0;
+        transform: scale(.3);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+
+    60% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    68%,
+    100% {
+        opacity: 0;
+    }
+
+}
+
+
+/* =================================
+   SIX
+================================= */
+
+.six {
+    position: absolute;
+
+    right: 30%;
+    top: 12%;
+
+    font-size: 130px;
+
+    font-weight: 900;
+
+    color: #ffd000;
+
+    text-shadow:
+        0 0 10px #ffd000,
+        0 0 30px #ff9900;
+
+    opacity: 0;
+
+    animation: showSix 5s infinite;
+}
+
+@keyframes showSix {
+
+    0%,
+    55% {
+        opacity: 0;
+
+        transform: scale(.2) rotate(-20deg);
+    }
+
+    60% {
+        opacity: 1;
+
+        transform: scale(1.2) rotate(0);
+    }
+
+    70% {
+        opacity: 1;
+
+        transform: scale(1);
+    }
+
+    80%,
+    100% {
+        opacity: 0;
+    }
+
+}
+
+
+/* =================================
+   PARTICLES
+================================= */
+
+.particles span {
+    position: absolute;
+
+    color: #54e346;
+
+    font-size: 25px;
+
+    opacity: 0;
+
+    animation: particles 4s infinite;
+}
+
+.particles span:nth-child(1) {
+    left: 20%;
+    top: 30%;
+    animation-delay: .5s;
+}
+
+.particles span:nth-child(2) {
+    left: 70%;
+    top: 25%;
+    animation-delay: 1s;
+}
+
+.particles span:nth-child(3) {
+    left: 50%;
+    top: 50%;
+    animation-delay: 1.5s;
+}
+
+.particles span:nth-child(4) {
+    left: 80%;
+    top: 60%;
+    animation-delay: 2s;
+}
+
+.particles span:nth-child(5) {
+    left: 30%;
+    top: 70%;
+    animation-delay: 2.5s;
+}
+
+.particles span:nth-child(6) {
+    left: 60%;
+    top: 40%;
+    animation-delay: 3s;
+}
+
+@keyframes particles {
+
+    0% {
+        opacity: 0;
+        transform: translateY(30px) scale(.5);
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-100px) scale(1.5);
+    }
+
+}
+
+
+/* =================================
+   NAVIGATION
+================================= */
+
+header {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+
+    padding: 20px;
+
+    z-index: 10;
+
+    background: rgba(0, 0, 0, .3);
+
+    backdrop-filter: blur(10px);
+}
+
+nav {
+    max-width: 1200px;
+
+    margin: auto;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+}
+
+.logo {
+    font-size: 25px;
+
+    font-weight: bold;
+
+    color: #54e346;
+}
+
+nav ul {
+    display: flex;
+
+    gap: 30px;
+
+    list-style: none;
+}
+
+nav a {
+    color: white;
+
+    text-decoration: none;
+
+    transition: .3s;
+}
+
+nav a:hover {
+    color: #54e346;
+}
+
+
+/* =================================
+   MAIN HERO
+================================= */
+
+main {
+    min-height: 100vh;
+
+    display: flex;
+
+    align-items: center;
+
+    padding-left: 10%;
+
+    position: relative;
+}
+
+.content {
+    position: relative;
+
+    z-index: 5;
+
+    max-width: 650px;
+}
+
+.welcome {
+    color: #54e346;
+
+    letter-spacing: 5px;
+
+    font-weight: bold;
+}
+
+.content h1 {
+    font-size: clamp(50px, 8vw, 100px);
+
+    line-height: .9;
+
+    margin: 20px 0;
+
+    font-weight: 900;
+}
+
+.content h2 {
+    font-size: 30px;
+
+    letter-spacing: 8px;
+}
+
+.tagline {
+    margin: 25px 0;
+
+    letter-spacing: 4px;
+}
+
+
+/* =================================
+   BUTTON
+================================= */
+
+.button {
+    display: inline-block;
+
+    padding: 15px 30px;
+
+    background: #54e346;
+
+    color: #061007;
+
+    text-decoration: none;
+
+    font-weight: bold;
+
+    border-radius: 5px;
+
+    transition: .3s;
+}
+
+.button:hover {
+    transform: translateY(-5px);
+
+    background: white;
+}
+
+
+/* =================================
+   SECTIONS
+================================= */
+
+section {
+    min-height: 70vh;
+
+    padding: 120px 10%;
+
+    text-align: center;
+
+    background: rgba(2, 8, 4, .75);
+
+    backdrop-filter: blur(3px);
+}
+
+section h2 {
+    font-size: 45px;
+
+    margin-bottom: 25px;
+
+    color: #54e346;
+}
+
+section p {
+    max-width: 700px;
+
+    margin: auto;
+
+    color: #c5ccc7;
+
+    font-size: 18px;
+}
+
+
+/* =================================
+   PLAYERS
+================================= */
+
+.players {
+    max-width: 1000px;
+
+    margin: 50px auto;
+
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 20px;
+}
+
+.players div {
+    padding: 40px 20px;
+
+    background: rgba(20, 30, 23, .9);
+
+    border: 1px solid #304635;
+
+    border-radius: 10px;
+
+    transition: .3s;
+}
+
+.players div:hover {
+    transform: translateY(-10px);
+
+    border-color: #54e346;
+}
+
+.players small {
+    color: #54e346;
+}
+
+
+/* =================================
+   FOOTER
+================================= */
+
+footer {
+    padding: 40px;
+
+    text-align: center;
+
+    background: #020604;
+
+    color: #777;
+}
+
+
+/* =================================
+   MOBILE
+================================= */
+
+@media (max-width: 768px) {
+
+    nav ul {
+        display: none;
+    }
+
+    main {
+        padding: 100px 25px;
+
+        text-align: center;
+
+        justify-content: center;
+    }
+
+    .content h1 {
+        font-size: 55px;
+    }
+
+    .content h2 {
+        font-size: 20px;
+
+        letter-spacing: 4px;
+    }
+
+    .players {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .batsman {
+        left: 42%;
+    }
+
+    .four {
+        font-size: 70px;
+    }
+
+    .six {
+        font-size: 90px;
+    }
+}
